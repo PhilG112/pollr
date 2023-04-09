@@ -3,7 +3,7 @@ name:               pollr
 version:            0.1.0.0
 -- synopsis:
 -- description:
-license-file:       LICENSE
+-- license-file:       LICENSE
 author:             Philg112
 maintainer:         none
 -- copyright:
@@ -19,14 +19,14 @@ executable pollr
     main-is:          Main.hs
     -- other-modules:
     -- other-extensions:
-    build-depends:    base ^>=4.17.0.0
-                    --, servant
-                    --, servant-server
-                    --, aeson
-                    --, warp
-                    --, text
-                    --, mtl
-                    --, containers
-                    --, time
+    build-depends:    base ^>=4.15.1.0
+                    , servant
+                    , servant-server
+                    , aeson
+                    , warp
+                    , text
+                    , mtl
+                    , containers
+                    , time
     hs-source-dirs:   app
     default-language: Haskell2010
