@@ -3,6 +3,9 @@
 let
     config = {
         packageOverrides = pkgs: rec {
+            hls = pkgs.haskell-language-server.override {
+                supportedGhcVersions = ["902" ];
+            };
             haskell = pkgs.haskell // {
                 packages = pkgs.haskell.packages // {
                     "${compiler}" = pkgs.haskell.packages."${compiler}".override {
@@ -16,5 +19,6 @@ let
     };
     pkgs = import <nixpkgs> { inherit config; };
 in
-    { pollr = pkgs.haskell.packages.${compiler}.pollr;
+    {
+        pollr = pkgs.haskell.packages.${compiler}.pollr;
     }
