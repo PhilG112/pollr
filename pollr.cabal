@@ -19,7 +19,7 @@ executable pollr
     main-is:          Main.hs
     -- other-modules:
     -- other-extensions:
-    build-depends:    base ^>=4.15.1.0
+    build-depends:    base ^>=4.16.4.0
                     , servant
                     , servant-server
                     , aeson
