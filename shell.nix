@@ -63,17 +63,33 @@
 /*     path = project; */
 /*   }) */
 
-{pkgs ? import <nixpkgs> {} }:
+# {pkgs ? import <nixpkgs> {} }:
 
-pkgs.haskellPackages.shellFor {
-    packages = hpkgs: [
-        (hpkgs.callPackage ./pollr.nix { })
-    ];
+# pkgs.haskellPackages.shellFor {
+#     packages = hpkgs: [
+#         (hpkgs.callPackage ./pollr.nix { })
+#     ];
 
-    nativeBuildInputs = [
-        pkgs.haskell-language-server
-        pkgs.haskell.compiler.ghc92
-        pkgs.libffi
-    ];
-}
+#     nativeBuildInputs = [
+#         pkgs.haskell-language-server
+#         pkgs.haskell.compiler.ghc92
+#         pkgs.libffi
+#     ];
+# }
 
+# let
+#     nixpkgs = import (fetchTarball ("https://github.com/NixOS/nixpkgs/archive/7553d0fe29801938bcb280bb324b579ef9016aea.tar.gz")) {};
+# in
+#     nixpkgs.haskellPackages.shellFor {
+#     packages = hpkgs: [
+#         (hpkgs.callPackage ./pollr.nix { })
+#     ];
+
+#     nativeBuildInputs = [
+#         nixpkgs.haskell-language-server
+#         nixpkgs.haskell.compiler.ghc92
+#         nixpkgs.libffi
+#     ];
+# }
+
+(import ./default.nix).pollr.env
