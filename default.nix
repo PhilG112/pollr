@@ -29,18 +29,26 @@
 /*     { pollr = pkgs.haskellPackages.callPackage ./pollr.nix {}; */
 /*     } */
 
-let
-    bootstrap = import <nixpkgs> {};
+# { compiler ? "ghc928" }:
 
-    nixpkgs = builtins.fromJSON (builtins.readFile ./nixpkgs.json);
-
-    src = bootstrap.fetchFromGitHub {
-        owner = "NixOS";
-        repo = "nixpkgs";
-        inherit (nixpkgs) rev sha256;
-    };
-
-    pkgs = import src {};
+# let
+#   config = {
+#     packageOverrides = pkgs: rec {
+#       haskell = pkgs.haskell // {
+#         packages = pkgs.haskell.packages // {
+#           "${compiler}" = pkgs.haskell.packages."${compiler}".override {
+#             overrides = haskellPackagesNew: haskellPackagesOld: rec {
+#               pollr =
+#                 haskellPackagesNew.callPackage ./pollr.nix { };
+#             };
+#           };
+#         };
+#       };
+#     };
+#   };
+let 
+    pkgs = import <nixpkgs> { };
 in
-    pkgs.haskellPackages.callPackage ./pollr.nix {}
+   { pollr = pkgs.haskellPackages.callPackage ./pollr.nix {};
+   }
 

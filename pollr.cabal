@@ -1,4 +1,4 @@
-cabal-version:      3.0
+cabal-version:      3.6
 name:               pollr
 version:            0.1.0.0
 -- synopsis:
@@ -19,7 +19,7 @@ executable pollr
     main-is:          Main.hs
     -- other-modules:
     -- other-extensions:
-    build-depends:    base ^>=4.16.4.0
+    build-depends:    base ^>=4.17.2.0
                     , servant
                     , servant-server
                     , aeson
